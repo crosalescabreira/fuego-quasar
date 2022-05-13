@@ -28,13 +28,14 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api")
 public final class UseCaseTopSecret {
+    UseCaseTopSecret(MessageService messageService,PositionService positionService, @Value("${satellite.map}") String satelliteListConfig){
+        this.messageService = messageService;
+        this.positionService = positionService;
+        this.satelliteListConfig = satelliteListConfig;
+    }
 
-    @Autowired
     MessageService messageService;
-    @Autowired
     PositionService positionService;
-
-    @Value("${satellite.map}")
     String satelliteListConfig;
 
     @PostMapping("/v1/topsecret")
